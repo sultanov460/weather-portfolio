@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.bg-weather {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/Default.jpg");
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
