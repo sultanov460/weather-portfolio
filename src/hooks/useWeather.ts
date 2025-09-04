@@ -1,1 +1,1 @@
-export const useWeather = () => {};
+export const useW = () => {};
