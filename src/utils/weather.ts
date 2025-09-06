@@ -8,6 +8,7 @@ export async function getWeatherData() {
         import.meta.env.VITE_OPENWEATHER_API_KEY
       }&units=metric`
     );
+    console.log(res.data);
     return res.data;
   } catch (e: unknown) {
     console.log(e);
