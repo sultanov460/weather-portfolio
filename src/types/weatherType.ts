@@ -1,22 +1,34 @@
-interface WeatherDetail {
+export interface Weather {
+  base: string;
+  clouds: { all: number };
+  cod: number;
+  dt: number;
   id: number;
-  feels_like: number;
-  humidity: number;
-  pressure: number;
-  country: string;
-  weather: string;
-  description: string;
-  wind: {
-    speed: number;
-    deg: number;
+  main: {
+    feels_like: number;
+    grnd_level: number;
+    humidity: number;
+    pressure: number;
+    sea_level: number;
+    temp: number;
+    temp_max: number;
+    temp_min: number;
   };
-  maxTemp: number;
-  minTemp: number;
-  city: string;
-}
-
-interface WeatherContextType {
-  weather: WeatherDetail | null;
-  loading: boolean;
-  error: string | null;
+  name: string;
+  sys: {
+    type: number;
+    id: number;
+    country: string;
+    sunrise: number;
+    sunset: number;
+  };
+  timezone: number;
+  visibility: number;
+  weather: {
+    id: number;
+    main: string;
+    description: string;
+    icon: string;
+    wind: { speed: number; deg: number };
+  }[];
 }

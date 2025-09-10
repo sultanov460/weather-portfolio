@@ -4,7 +4,12 @@ import { getWeatherData } from "./utils/weather";
 
 const App = () => {
   useEffect(() => {
-    getWeatherData(); // 👈 вызываем функцию, тогда сработает console.log
+    async function fetchData() {
+      const data = await getWeatherData();
+      console.log("API DATA:", data);
+    }
+
+    fetchData();
   }, []);
   return (
     <>
