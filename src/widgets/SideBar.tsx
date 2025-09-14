@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { IoSearch } from "react-icons/io5";
 import { RiCelsiusFill } from "react-icons/ri";
 import { useWeather } from "../context/weatherContext";
+import { DotLoader } from "react-spinners";
 export const SideBar = () => {
   const [search, setSearch] = useState<string>("");
   const { getWeatherData, loading, weather } = useWeather();
@@ -11,7 +12,11 @@ export const SideBar = () => {
     setSearch("");
   }
   if (loading) {
-    return <div className="fixed inset-0 bg-black/70 ">Loading...</div>;
+    return (
+      <div className="fixed inset-0 bg-white/70 flex items-center justify-center">
+        <DotLoader color="#fff" />
+      </div>
+    );
   }
   return (
     <div className=" bg-white/10 backdrop-blur-lg p-4  w-full h-screen md:w-[45%] lg:w-[40%] shadow-lg md:rounded-xl absolute right-0">
