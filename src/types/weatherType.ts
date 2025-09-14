@@ -22,6 +22,10 @@ export interface Weather {
     sunrise: number;
     sunset: number;
   };
+  wind: {
+    speed: number;
+    deg: number;
+  };
   timezone: number;
   visibility: number;
   weather: {
