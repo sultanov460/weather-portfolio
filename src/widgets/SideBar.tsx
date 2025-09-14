@@ -2,12 +2,29 @@ import { useState, type FormEvent } from "react";
 import { IoSearch } from "react-icons/io5";
 import { RiCelsiusFill } from "react-icons/ri";
 import { useWeather } from "../context/weatherContext";
+import {
+  notifyError,
+  notifySuccess,
+  notifyWarning,
+} from "../utils/notification";
 export const SideBar = () => {
   const [search, setSearch] = useState<string>("");
-  const { getWeatherData, loading, weather } = useWeather();
-  function handleSubmit(e: FormEvent) {
+  const { getWeatherData, loading, weather, error } = useWeather();
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    getWeatherData(search);
+
+    if (!search.trim()) {
+      notifyWarning("Please enter your city");
+      return;
+    }
+
+    await getWeatherData(search);
+
+    if (error) {
+      notifyError("We don't found your city");
+      return;
+    }
+    notifySuccess("We found your city");
     setSearch("");
   }
   if (loading) {

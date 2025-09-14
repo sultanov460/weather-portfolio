@@ -35,7 +35,8 @@ export default function WeatherProvider({ children }: WeatherProviderProps) {
       setWeather(res.data);
     } catch (e: unknown) {
       console.log(e);
-      setError("City not found");
+      setError("City not found!");
+      setWeather(null);
     } finally {
       setLoading(false);
     }

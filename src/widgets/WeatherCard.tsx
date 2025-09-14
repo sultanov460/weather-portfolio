@@ -4,7 +4,7 @@ import { useWeather } from "../context/weatherContext";
 import { useEffect, useState } from "react";
 
 export const WeatherCard = () => {
-  const { weather } = useWeather();
+  const { weather, error } = useWeather();
 
   const [currentDay, setCurrentDay] = useState<string>("NO Day");
 
@@ -34,7 +34,7 @@ export const WeatherCard = () => {
         </div>
         <div className="flex flex-col -gap-2.5">
           <span className="font-bold text-5xl md:text-3xl lg:text-4xl">
-            {weather?.name}
+            {weather ? weather?.name : error}
           </span>
           <span className="text-gray-300 text-center ">{currentDay}</span>
         </div>
