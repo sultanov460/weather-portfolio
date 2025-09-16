@@ -2,18 +2,12 @@ import { useEffect, useState, type FormEvent } from "react";
 import { IoSearch } from "react-icons/io5";
 import { RiCelsiusFill } from "react-icons/ri";
 import { useWeather } from "../context/weatherContext";
-import {
-  notifyError,
-  notifySuccess,
-  notifyWarning,
-} from "../utils/notification";
+import { DotLoader } from "react-spinners";
+import { notifySuccess, notifyWarning } from "../utils/notification";
+
 export const SideBar = () => {
   const [search, setSearch] = useState<string>("");
-  const { getWeatherData, loading, weather, error } = useWeather();
-
-  useEffect(() => {
-    localStorage.setItem("city", JSON.stringify(search));
-  }, [search]);
+  const { getWeatherData, loading, weather } = useWeather();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -23,17 +17,20 @@ export const SideBar = () => {
       return;
     }
 
-    await getWeatherData(search);
+    const data = await getWeatherData(search);
 
-    if (error) {
-      notifyError("We don't found your city");
-      return;
+    if (data) {
+      notifySuccess("We found your city");
     }
-    notifySuccess("We found your city");
     setSearch("");
   }
+
   if (loading) {
-    return <div className="fixed inset-0 bg-black/70 ">Loading...</div>;
+    return (
+      <div className="fixed inset-0 bg-white/70 flex items-center justify-center">
+        <DotLoader color="#fff" />
+      </div>
+    );
   }
   return (
     <div className=" bg-white/10 backdrop-blur-lg p-4  w-full h-screen md:w-[45%] lg:w-[40%] shadow-lg md:rounded-xl absolute right-0">
