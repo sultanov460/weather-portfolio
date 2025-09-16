@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { IoSearch } from "react-icons/io5";
 import { RiCelsiusFill } from "react-icons/ri";
 import { useWeather } from "../context/weatherContext";
@@ -10,6 +10,11 @@ import {
 export const SideBar = () => {
   const [search, setSearch] = useState<string>("");
   const { getWeatherData, loading, weather, error } = useWeather();
+
+  useEffect(() => {
+    localStorage.setItem("city", JSON.stringify(search));
+  }, [search]);
+
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
@@ -54,8 +59,12 @@ export const SideBar = () => {
           <div className="flex justify-between items-center">
             <span className="font-medium">Feels like</span>
             <span className="flex items-center font-semibold gap-0.5">
-              {weather?.main.feels_like}
-              <RiCelsiusFill />
+              {weather && (
+                <>
+                  {weather?.main.feels_like}
+                  <RiCelsiusFill />
+                </>
+              )}
             </span>
           </div>
           <div className="flex justify-between items-center">
@@ -97,7 +106,7 @@ export const SideBar = () => {
           <div className="flex justify-between items-center">
             <span className="font-medium">Wind</span>
             <span className="flex items-center font-semibold gap-0.5">
-              {weather?.wind.speed} km/h
+              {weather && <>{weather?.wind.speed} km/h</>}
             </span>
           </div>
         </div>
@@ -106,14 +115,22 @@ export const SideBar = () => {
           <div className="flex justify-between items-center">
             <span className="font-medium">Max Temperature</span>
             <span className="flex items-center font-semibold gap-0.5">
-              {weather?.main.temp_max} <RiCelsiusFill />
+              {weather && (
+                <>
+                  {weather?.main.temp_max} <RiCelsiusFill />
+                </>
+              )}
             </span>
           </div>
           <div className="flex justify-between items-center">
             <span className="font-medium">Min Temperature</span>
             <span className="flex items-center font-semibold gap-0.5">
-              {weather?.main.temp_min}
-              <RiCelsiusFill />
+              {weather && (
+                <>
+                  {weather?.main.temp_min}
+                  <RiCelsiusFill />
+                </>
+              )}
             </span>
           </div>
           <hr className="border-t border-gray-300 my-4" />

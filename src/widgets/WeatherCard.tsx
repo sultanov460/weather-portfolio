@@ -27,10 +27,20 @@ export const WeatherCard = () => {
     <div className="bg-weather">
       <div className="flex flex-col items-center gap-1 text-white pt-20 pb-12 md:flex-row md:gap-3 md:p-0 md:absolute md:bottom-4 md:left-8">
         <div className="flex gap-0.5 items-center">
-          <span className="font-bold text-4xl md:text-5xl">
-            {weather?.main.temp}
-          </span>{" "}
-          <RiCelsiusFill size={32} />
+          {weather ? (
+            <>
+              <span className="font-bold text-4xl md:text-5xl">
+                {weather?.main.temp}
+              </span>{" "}
+              <RiCelsiusFill size={32} />
+            </>
+          ) : (
+            <>
+              <h5 className="text-3xl  font-semibold mb-10">
+                Please enter your city
+              </h5>
+            </>
+          )}
         </div>
         <div className="flex flex-col -gap-2.5">
           <span className="font-bold text-5xl md:text-3xl lg:text-4xl">
