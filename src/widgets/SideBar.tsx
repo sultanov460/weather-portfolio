@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { IoSearch } from "react-icons/io5";
 import { RiCelsiusFill } from "react-icons/ri";
 import { useWeather } from "../context/weatherContext";
@@ -7,7 +7,6 @@ import { notifySuccess, notifyWarning } from "../utils/notification";
 
 export const SideBar = () => {
   const [search, setSearch] = useState<string>("");
-  const { getWeatherData, loading, weather, error } = useWeather();
   const { getWeatherData, loading, weather } = useWeather();
 
   async function handleSubmit(e: FormEvent) {
