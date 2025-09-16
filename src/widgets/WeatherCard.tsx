@@ -30,7 +30,7 @@ export const WeatherCard = () => {
           {weather ? (
             <>
               <span className="font-bold text-4xl md:text-5xl">
-                {weather?.main.temp}
+                {Math.round(weather?.main.temp)}
               </span>{" "}
               <RiCelsiusFill size={32} />
             </>

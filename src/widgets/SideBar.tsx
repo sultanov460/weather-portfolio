@@ -61,7 +61,7 @@ export const SideBar = () => {
             <span className="flex items-center font-semibold gap-0.5">
               {weather && (
                 <>
-                  {weather?.main.feels_like}
+                  {Math.round(weather?.main.feels_like)}
                   <RiCelsiusFill />
                 </>
               )}
@@ -117,7 +117,7 @@ export const SideBar = () => {
             <span className="flex items-center font-semibold gap-0.5">
               {weather && (
                 <>
-                  {weather?.main.temp_max} <RiCelsiusFill />
+                  {Math.round(weather?.main.temp_max)} <RiCelsiusFill />
                 </>
               )}
             </span>
@@ -127,7 +127,7 @@ export const SideBar = () => {
             <span className="flex items-center font-semibold gap-0.5">
               {weather && (
                 <>
-                  {weather?.main.temp_min}
+                  {Math.round(weather?.main.temp_min)}
                   <RiCelsiusFill />
                 </>
               )}
