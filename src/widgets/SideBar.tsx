@@ -56,8 +56,12 @@ export const SideBar = () => {
           <div className="flex justify-between items-center">
             <span className="font-medium">Feels like</span>
             <span className="flex items-center font-semibold gap-0.5">
-              {weather?.main.feels_like}
-              <RiCelsiusFill />
+              {weather && (
+                <>
+                  {Math.round(weather?.main.feels_like)}
+                  <RiCelsiusFill />
+                </>
+              )}
             </span>
           </div>
           <div className="flex justify-between items-center">
@@ -99,7 +103,7 @@ export const SideBar = () => {
           <div className="flex justify-between items-center">
             <span className="font-medium">Wind</span>
             <span className="flex items-center font-semibold gap-0.5">
-              {weather?.wind.speed} km/h
+              {weather && <>{weather?.wind.speed} km/h</>}
             </span>
           </div>
         </div>
@@ -108,14 +112,22 @@ export const SideBar = () => {
           <div className="flex justify-between items-center">
             <span className="font-medium">Max Temperature</span>
             <span className="flex items-center font-semibold gap-0.5">
-              {weather?.main.temp_max} <RiCelsiusFill />
+              {weather && (
+                <>
+                  {Math.round(weather?.main.temp_max)} <RiCelsiusFill />
+                </>
+              )}
             </span>
           </div>
           <div className="flex justify-between items-center">
             <span className="font-medium">Min Temperature</span>
             <span className="flex items-center font-semibold gap-0.5">
-              {weather?.main.temp_min}
-              <RiCelsiusFill />
+              {weather && (
+                <>
+                  {Math.round(weather?.main.temp_min)}
+                  <RiCelsiusFill />
+                </>
+              )}
             </span>
           </div>
           <hr className="border-t border-gray-300 my-4" />

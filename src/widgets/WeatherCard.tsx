@@ -28,8 +28,8 @@ export const WeatherCard = () => {
       <div className="flex flex-col items-center gap-1 text-white pt-20 pb-12 md:flex-row md:gap-3 md:p-0 md:absolute md:bottom-4 md:left-8">
         <div className="flex gap-0.5 items-center">
           <span className="font-bold text-4xl md:text-5xl">
-            {!error && weather?.main.temp}
-          </span>{" "}
+            {!error && weather && Math.round(weather?.main.temp)}
+          </span>
           {!error && <RiCelsiusFill size={32} />}
         </div>
         <div className="flex flex-col -gap-2.5">
