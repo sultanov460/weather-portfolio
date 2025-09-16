@@ -3,7 +3,7 @@ import axios from "axios";
 import type { Weather } from "../types/weatherType";
 
 interface WeatherContext {
-  getWeatherData: (city: string) => Promise<void>;
+  getWeatherData: (city: string) => Promise<Weather>;
   weather: Weather | null;
   loading: boolean;
   error: string | null;
@@ -31,8 +31,8 @@ export default function WeatherProvider({ children }: WeatherProviderProps) {
       const res = await axios.get(
         `${BASE_URL}?q=${city}&appid=${API_KEY}&units=metric`
       );
-      console.log(res.data);
       setWeather(res.data);
+      return res.data;
     } catch (e: unknown) {
       console.log(e);
       setError("City not found!");
