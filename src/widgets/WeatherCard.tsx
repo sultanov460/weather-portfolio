@@ -24,7 +24,7 @@ export const WeatherCard = () => {
   }, []);
 
   return (
-    <div className="bg-weather">
+    <div>
       <div className="flex flex-col items-center gap-1 text-white pt-20 pb-12 md:flex-row md:gap-3 md:p-0 md:absolute md:bottom-4 md:left-8">
         <div className="flex gap-0.5 items-center">
           <span className="font-bold text-4xl md:text-5xl">

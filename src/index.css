@@ -1,9 +1,26 @@
 @import "tailwindcss";
 
-.bg-weather {
+.bg-thunderstorm {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/thunderstorm-bg.jpg");
+}
+
+.bg-clear {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/clear-bg.jpg");
+}
+
+.bg-clouds {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/clouds-bg.jpg");
+}
+
+.bg-rain {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/rainy-bg.jpg");
+}
+
+.bg-default {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("/Default.jpg");
-  height: 100vh;
-  background-position: center;
-  background-size: cover;
 }
