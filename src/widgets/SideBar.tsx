@@ -39,7 +39,7 @@ export const SideBar = () => {
           <input
             type="text"
             placeholder="Search..."
-            className="bg-gray-300 rounded-xl w-88 py-2 pl-3 outline-none pr-10 text-slate-800 mx-3 lg:mx-0 "
+            className="bg-gray-300 rounded-xl w-88 py-2 pl-3 outline-none pr-10 text-slate-800 !mx-3 lg:mx-0 "
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />

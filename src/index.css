@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+body {
+  overflow-y: hidden;
+}
+
 .bg-thunderstorm {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("/thunderstorm-bg.jpg");
