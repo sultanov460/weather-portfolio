@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
 import axios from "axios";
 import type { Weather } from "../types/weatherType";
 
@@ -18,11 +24,20 @@ const weatherContext = createContext({} as WeatherContext);
 export const useWeather = () => useContext(weatherContext);
 
 export default function WeatherProvider({ children }: WeatherProviderProps) {
-  const [weather, setWeather] = useState<Weather | null>(null);
+  const [weather, setWeather] = useState<Weather | null>(() => {
+    const saved = localStorage.getItem("weatherData");
+    return saved ? JSON.parse(saved) : null;
+  });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
   const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
+
+  useEffect(() => {
+    if (weather) {
+      localStorage.setItem("weatherData", JSON.stringify(weather));
+    }
+  }, [weather]);
 
   async function getWeatherData(city: string) {
     setLoading(true);
