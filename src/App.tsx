@@ -1,9 +1,12 @@
+import WeatherBackground from "./widgets/WeatherBackground";
 import { WeatherCard } from "./widgets/WeatherCard";
 
 const App = () => {
   return (
     <>
-      <WeatherCard />
+      <WeatherBackground>
+        <WeatherCard />
+      </WeatherBackground>
     </>
   );
 };
